@@ -4,9 +4,3 @@ metadata:
   name: jaeger-tracing
 spec:
   strategy: production
-#  collector:
-#    maxReplicas: 3
-#    resources:
-#      limits:
-#        cpu: 500m
-#        memory: 128Mi
