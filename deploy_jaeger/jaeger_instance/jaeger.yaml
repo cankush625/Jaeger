@@ -4,3 +4,21 @@ metadata:
   name: jaeger-tracing
 spec:
   strategy: production
+  storage:
+    type: elasticsearch
+    options:
+      es:
+        server-urls: https://quickstart-es-http.observability.svc:9200
+        tls.ca: /etc/ssl/certs/tls.crt
+    secretName: quickstart-es
+  ingress:
+    enabled: false
+  agent:
+    strategy: Sidecar
+  volumeMounts:
+  - name: es-tls
+    mountPath: /etc/ssl/certs
+  volumes:
+  - name: es-tls
+    secret:
+      secretName: quickstart-es-http-certs-public
